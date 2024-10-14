@@ -1,0 +1,20 @@
+{
+    "name": "inira/karyawan-mvc",
+    "type": "project",
+    "authors": [
+        {
+            "name": "RasyaPrtma",
+            "email": "rasyaputraq17@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "karyawanmvc\\": "app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "karyawanmvc\\": "tests"
+        }
+    }
+}
