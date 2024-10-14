@@ -49,9 +49,9 @@ php -S 127.0.0.1:8080
 > Project Karyawan Sudah Bisa Dijalankan 
 
 
-## Do You Need Installation
+## What I Use On This Project
 
-- Installation
+- List
   - [PHP](https://www.php.net/)
   - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
   - [Bootstrap](https://getbootstrap.com/)
