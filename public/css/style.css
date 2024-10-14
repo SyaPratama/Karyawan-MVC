@@ -375,6 +375,15 @@ td:last-child a:hover {
   cursor: pointer;
 }
 
+.table-link{
+  color: #898989;
+  transition: all .3s ease-in-out;
+}
+
+.table-link:hover{
+  color:#fff !important;
+}
+
 @keyframes rotate {
   from,
   to {

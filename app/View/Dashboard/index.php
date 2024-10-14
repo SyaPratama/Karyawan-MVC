@@ -31,11 +31,11 @@
           <td><?= $karyawan["nama"] ?></td>
           <td><?= $karyawan["alamat"] ?></td>
           <td>
-            <a href="" class="delete" value="<?= $karyawan["id"] ?>"><i class="bi bi-trash"></i></a>
-            <a href="" class="update" data-bs-toggle="modal" data-bs-target="#addKaryawan" value="<?= $karyawan["id"] ?>"><i class="bi bi-tools"></i></a>
+            <a href="" class="table-link delete" value="<?= $karyawan["id"] ?>"><i class="bi bi-trash"></i></a>
+            <a href="" class="table-link update" data-bs-toggle="modal" data-bs-target="#addKaryawan" value="<?= $karyawan["id"] ?>"><i class="bi bi-tools"></i></a>
           </td>
           <td>
-            <a href="" class="nilai" value="<?= $karyawan["id"] ?>" data-bs-toggle="modal" data-bs-target="#addNilai"><i class="bi bi-clipboard2-pulse-fill"></i></a>
+            <a href="" class="table-link nilai" value="<?= $karyawan["id"] ?>" data-bs-toggle="modal" data-bs-target="#addNilai"><i class="bi bi-clipboard2-pulse-fill"></i></a>
           </td>
         </tr>
 
