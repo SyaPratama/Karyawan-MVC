@@ -27,10 +27,10 @@ class HomeController implements Controller
         ]);
     }
 
-    public function dashboard(): void
+    public function penilaian(): void
     {
-        View::render("Dashboard/dashboard", [
-            "title" => "Dashboard Karyawan"
+        View::render("Dashboard/penilaian", [
+            "title" => "Dashboard Penilaian Karyawan"
         ]);
     }
 

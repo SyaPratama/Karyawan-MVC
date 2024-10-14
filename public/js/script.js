@@ -148,3 +148,13 @@ $(".delete").each(function () {
     });
   });
 });
+
+$('.nilai').each(function(){
+  $(this).on('click',function(){
+      const id = $(this).attr('value');
+      $('#addNilai').show();
+      $("#addNilai .modal-body form").append(
+        `<input type='hidden' name='id' value='${id}'>`
+      );
+  });
+})
