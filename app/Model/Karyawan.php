@@ -55,7 +55,7 @@ class Karyawan extends Model
         $this->db->bind("id", $id);
         $this->db->bind("nik",$nik);
         $this->db->bind("nama",$nama);
-        $this->db->bind("alamat",$nik);
+        $this->db->bind("alamat",$alamat);
         $this->db->bind("updated_at",$updatedAt);
         $this->db->execute();
 
@@ -68,5 +68,19 @@ class Karyawan extends Model
         $this->db->bind('id',$id);
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function searchKaryawanWithPagination(string $keyword, int $min, int $max): array
+    {
+        $this->db->query("SELECT * FROM karyawan WHERE nama LIKE '%$keyword%' OR nik LIKE '%$keyword%' LIMIT $min,$max");
+        $this->db->execute();
+        return $this->db->fetchAll();
+    }
+
+    public function searchKaryawan(string $keyword): array
+    {
+        $this->db->query("SELECT * FROM karyawan WHERE nama LIKE '%$keyword%' OR nik LIKE '%$keyword%'");
+        $this->db->execute();
+        return $this->db->fetchAll();
     }
 }

@@ -45,7 +45,7 @@ $(".update").each(function () {
   $(this).on("click", function () {
     const id = $(this).attr("value");
     $("#addKaryawan").show();
-    const url = window.location.href;
+    const url = window.location.origin;
     $.ajax({
       url: `${url}/karyawanId`,
       type: "GET",
@@ -107,7 +107,7 @@ $("#btn-addKaryawan").on("click", function () {
 $(".delete").each(function () {
   $(this).on("click", function (e) {
     const id = $(this).attr("value");
-    const url = window.location.href;
+    const url = window.location.origin;
     e.preventDefault();
     Swal.fire({
       title: "Apakah Anda Yakin Ingin Menghapus Nya?",
