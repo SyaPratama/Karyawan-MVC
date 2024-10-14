@@ -1,5 +1,4 @@
 # Website Karyawan PHP Composer
-<hr>
 Website Berbasis PHP
 
 <p align="center" widh="100%">
@@ -11,7 +10,6 @@ bahasa pemrograman php dan javascript serta framework css berupa bootstrap.
 
 
 ## Clone This Project
-<hr>
 
 ```
 git clone https://github.com/SyaPratama/Karyawan-MVC.git
