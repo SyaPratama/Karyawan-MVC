@@ -2,6 +2,7 @@
 
 namespace karyawanmvc\Controller;
 
+use ArrayAccess;
 use karyawanmvc\Model\Karyawan;
 
 class KaryawanController
@@ -120,5 +121,19 @@ class KaryawanController
         ];
         echo json_encode($response);
         exit();
+    }
+
+    public function searchKaryawan(string $keyword)
+    {
+        $modelKaryawan = new Karyawan();
+        $result = $modelKaryawan->searchKaryawan($keyword);
+        return $result;
+    }
+
+    public function searchKaryawanPagination(string $keyword, int $min, int $max): array
+    {
+        $modelKaryawan = new Karyawan();
+        $result = $modelKaryawan->searchKaryawanWithPagination($keyword,$min,$max);
+        return $result;
     }
 }

@@ -179,8 +179,7 @@ form {
 }
 
 #sidebar {
-  height: 100vh !important;
-  min-height: 100vh;
+  min-height: 100vh !important;
   position: relative;
   transition: all 0.6s ease-in-out;
   z-index: 99999 !important;

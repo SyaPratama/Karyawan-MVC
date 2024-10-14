@@ -11,12 +11,28 @@ class HomeController implements Controller
         $karyawan = new KaryawanController();
         $karyawanResult = $karyawan->getKaryawan();
 
-        $totalHalaman = 25;
+        $totalHalaman = 20;
         $totalData = count($karyawanResult);
         $totalPage = ceil($totalData / $totalHalaman);
         $activePage = $_GET["page"] ?? 1;
         $mainPage = $totalHalaman * $activePage - $totalHalaman;
-        $karyawanResult = $karyawan->getKaryawanPage($mainPage,$totalHalaman);
+
+        if (isset($_GET["search"]) && isset($_GET["page"])) {
+            $keyword = filter_var($_GET["search"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $karyawanResult = $karyawan->searchKaryawan($keyword);
+            $totalData = count($karyawanResult);
+            $totalPage = ceil($totalData / $totalHalaman);
+            $karyawanResult = $karyawan->searchKaryawanPagination($keyword,$mainPage,$totalHalaman);
+
+        } else if (isset($_GET["search"])) {
+            $keyword = filter_var($_GET["search"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $karyawanResult = $karyawan->searchKaryawan($keyword);
+            $totalData = count($karyawanResult);
+            $totalPage = ceil($totalData / $totalHalaman);
+            $karyawanResult = $karyawan->searchKaryawanPagination($keyword,$mainPage,$totalHalaman);
+        }else{
+            $karyawanResult = $karyawan->getKaryawanPage($mainPage, $totalHalaman);
+        }
 
         View::render("Dashboard/index", [
             "title" => "Home Page Karyawan",
