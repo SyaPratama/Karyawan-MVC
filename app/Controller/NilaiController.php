@@ -29,4 +29,11 @@ class NilaiController
         header("Location: /");
         exit(400);
     }
+
+    public function getNilai(): Array
+    {
+        $modelNilai = new Nilai();
+        $result = $modelNilai->getNilai();
+        return $result;
+    }
 }

@@ -45,8 +45,30 @@ class HomeController implements Controller
 
     public function penilaian(): void
     {
+        $karyawan = new KaryawanController();
+        $nilai = new NilaiController();
+        $nilaiResult = $nilai->getNilai();
+        $totalHalaman = 20;
+        $totalData = count($nilaiResult);
+        $totalPage = ceil($totalData / $totalHalaman);
+        $activePage = $_GET["page"] ?? 1;
+        $mainPage = $totalHalaman * $activePage - $totalHalaman;
+
+        $resultNilai = $nilai->getNilai();
+        $arrKaryawan = [];
+
+        foreach($resultNilai as $newNilai){
+            $findKaryawan = $karyawan->findKaryawanBydId($newNilai["id_karyawan"]);
+            array_push($arrKaryawan,$findKaryawan);
+        }
+        
         View::render("Dashboard/penilaian", [
-            "title" => "Dashboard Penilaian Karyawan"
+            "title" => "Dashboard Penilaian Karyawan",
+            "nilai" => $nilaiResult,
+            "totalPage" => $totalPage,
+            "activePage" => $activePage,
+            "mainPage" => $mainPage,
+            "findKaryawan" => $arrKaryawan
         ]);
     }
 

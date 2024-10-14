@@ -343,33 +343,52 @@ form {
   font-size: 14px;
 }
 
-td:not(:last-child),
-td:not(:nth-child(5)) {
+#mainLayout td:not(:last-child),
+#mainLayout td:not(:nth-child(5)){
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-td:last-child {
+#mainLayout td:last-child {
   text-align: center;
   max-width: 70px;
 }
 
-td:nth-child(5){
+#mainLayout td:nth-child(5){
   text-align: center;
   max-width: 70px; 
 }
 
 
-td:last-child a {
+#mainLayout td:last-child a {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-td:last-child a:hover {
+#mainLayout td:last-child a:hover {
   color: #f8f9fa;
 }
+
+.dashboard#nilaiLayout th{
+  text-align: center;
+}
+
+.dashboard#nilaiLayout td:not(:last-child){
+  text-align: center;
+  max-width: 100px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#nilaiLayout td:last-child{
+  max-width: 70px !important;
+  text-align: center;
+}
+
+
 
 .page-link {
   cursor: pointer;

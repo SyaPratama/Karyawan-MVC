@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" id="mainLayout">
   <h2>List Karyawan</h2>
   <div class="d-flex justify-content-between align-items-center">
     <button id="btn-addKaryawan" type="button" class="mt-3 mb-2 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addKaryawan">

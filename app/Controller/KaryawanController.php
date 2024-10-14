@@ -29,6 +29,13 @@ class KaryawanController
         echo json_encode($result);
     }
 
+    public function findKaryawanBydId(int $id): Array | Bool
+    {
+        $karyawan = new Karyawan();
+        $result = $karyawan->getkaryawanById($id);
+        return $result;
+    }
+
     public function addKaryawan(): void
     {
         $modelKaryawan = new Karyawan();
