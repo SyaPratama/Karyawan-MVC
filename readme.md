@@ -2,7 +2,7 @@
 Website Berbasis PHP
 
 <p align="center" widh="100%">
- <img src="php.jpeg" width="100%">
+ <img src="php.jpg" width="100%">
 </p>
 
 Ini adalah sebuah website pengelolaan karyawan sederhana yang dibuat menggunakan 
