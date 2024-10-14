@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/dashboard" class="nav-link link-dark <?= isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] === "/dashboard" ? "active" : "" ?>">
+                        <a href="/penilaian" class="nav-link link-dark <?= isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] === "/penilaian" ? "active" : "" ?>">
                             <i class="bi bi-clipboard2-pulse-fill"></i>
                             Penilaian
                         </a>

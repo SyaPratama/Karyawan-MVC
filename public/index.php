@@ -6,6 +6,7 @@ require __DIR__ . "/../vendor/autoload.php";
 use karyawanmvc\App\Router;
 use karyawanmvc\Controller\HomeController;
 use karyawanmvc\Controller\KaryawanController;
+use karyawanmvc\Controller\NilaiController;
 use karyawanmvc\Controller\UserController;
 use karyawanmvc\Middleware\AuthMiddleware;
 
@@ -23,7 +24,7 @@ if(!isset($_SESSION["LOGGED"])){
 }
 
 Router::add("GET", "/", HomeController::class, "index", [AuthMiddleware::class]);
-Router::add("GET", "/dashboard", HomeController::class, "dashboard", [AuthMiddleware::class]);
+Router::add("GET", "/penilaian", HomeController::class, "penilaian", [AuthMiddleware::class]);
 Router::add("GET","/karyawanId",KaryawanController::class,"getKaryawanById",[AuthMiddleware::class]);
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
@@ -35,6 +36,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
     Router::add("POST","/addKaryawan", KaryawanController::class, "addKaryawan",[AuthMiddleware::class]);
     Router::add("POST","/updateKaryawan", KaryawanController::class, "updateKaryawan",[AuthMiddleware::class]);
     Router::add("POST","/deleteKaryawan", KaryawanController::class, "deleteKaryawan",[AuthMiddleware::class]);
+    Router::add("POST","/addNilai",NilaiController::class,"addNilai",[AuthMiddleware::class]);
 }
 
 Router::run();

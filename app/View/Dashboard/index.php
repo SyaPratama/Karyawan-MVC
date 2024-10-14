@@ -19,6 +19,7 @@
         <th scope="col">Nama</th>
         <th scope="col">Alamat</th>
         <th scope="col">Action</th>
+        <th scope="col">Nilai</th>
       </tr>
     </thead>
     <tbody>
@@ -30,8 +31,11 @@
           <td><?= $karyawan["nama"] ?></td>
           <td><?= $karyawan["alamat"] ?></td>
           <td>
-            <a href="/" class="delete" value="<?= $karyawan["id"] ?>"><i class="bi bi-trash"></i></a>
-            <a href="/" class="update" data-bs-toggle="modal" data-bs-target="#addKaryawan" value="<?= $karyawan["id"] ?>"><i class="bi bi-tools"></i></a>
+            <a href="" class="delete" value="<?= $karyawan["id"] ?>"><i class="bi bi-trash"></i></a>
+            <a href="" class="update" data-bs-toggle="modal" data-bs-target="#addKaryawan" value="<?= $karyawan["id"] ?>"><i class="bi bi-tools"></i></a>
+          </td>
+          <td>
+            <a href="" class="nilai" value="<?= $karyawan["id"] ?>" data-bs-toggle="modal" data-bs-target="#addNilai"><i class="bi bi-clipboard2-pulse-fill"></i></a>
           </td>
         </tr>
 
@@ -82,6 +86,38 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Tambah</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addNilai" tabindex="-1" aria-labelledby="nilai" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="nilai">Beri Nilai</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/addNilai" class="bg-body" method="POST">
+          <div class="mb-3 form-floating">
+            <input type="number" class="form-control" name="disiplin" min="0" max="100" id="disiplin" placeholder="Masukkan Nilai Disiplin Karyawan..." required>
+            <label for="displin">Disiplin</label>
+          </div>
+          <div class="mb-3 form-floating">
+            <input type="number" min="0" max="100" class="form-control" id="kerapian" name="kerapian" placeholder="Masukkan Nilai Kerapian Karyawan..." required>
+            <label for="kerapian">Kerapian</label>
+          </div>
+          <div class="mb-3 form-floating">
+          <input type="number" min="0" max="100" class="form-control" id="kreativitas" name="kreativitas" placeholder="Masukkan Nilai Kreativitas Karyawan..." required>
+            <label for="kreativitas">Kreativitas</label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Nilai</button>
       </div>
       </form>
     </div>
