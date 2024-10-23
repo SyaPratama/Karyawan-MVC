@@ -38,7 +38,7 @@ class Karyawan extends Model
     public function addKaryawan(string $nik, string $nama, string $alamat, string $unixTimeStamp): int
     {
         $this->db->query("INSERT INTO karyawan VALUES(:id,:nik,:nama,:alamat,:created_at,:updated_at)");
-        $this->db->bind("id","");
+        $this->db->bind("id",0);
         $this->db->bind("nik",$nik);
         $this->db->bind("nama",$nama);
         $this->db->bind("alamat",$alamat);

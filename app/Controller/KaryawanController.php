@@ -21,11 +21,11 @@ class KaryawanController
         return $result;
     }
 
-    public function getKaryawanById(): void
+    public function getKaryawanById(int $id)
     {
-        $id = (int)$_GET["id"];
         $karyawan = new Karyawan();
         $result = $karyawan->getkaryawanById($id);
+        header("Content-Type: application/json");
         echo json_encode($result);
     }
 
@@ -47,7 +47,7 @@ class KaryawanController
         // Check If Has Duplicate Data
         if ($modelKaryawan->getKaryawanByNikOrName($nik) || $modelKaryawan->getKaryawanByNikOrName($nama)) {
             $_SESSION["error"] = "Nama Atau Nik Sudah Digunakan!";
-            header("Location: /");
+            header("Location: {$GLOBALS['BASEURL']}");
             exit(400);
         }
 
@@ -61,11 +61,11 @@ class KaryawanController
 
         if ($result !== -1) {
             $_SESSION["success"] = "Berhasil Menambahkan Karyawan";
-            header("Location: /");
+            header("Location: {$GLOBALS['BASEURL']}");
             exit(200);
         }
         $_SESSION["error"] = "Gagal Menambahkan Karyawan";
-        header("Location: /");
+        header("Location: {$GLOBALS['BASEURL']}");
         exit(400);
     }
 
@@ -84,11 +84,11 @@ class KaryawanController
         if ($findKaryawan["nama"] !== $nama || $findKaryawan["nik"] !== $nik) {
             if ($modelKaryawan->getKaryawanByNikOrName($nik) && $findKaryawan["nik"] !== $nik) {
                 $_SESSION["error"] = "Nik Sudah Digunakan!";
-                header("Location: /");
+                header("Location: {$GLOBALS['BASEURL']}");
                 exit(400);
             } else if ($modelKaryawan->getKaryawanByNikOrName($nama) && $findKaryawan["nama"] !== $nama) {
                 $_SESSION["error"] = "Nama Sudah Digunakan!";
-                header("Location: /");
+                header("Location: {$GLOBALS['BASEURL']}");
                 exit(400);
             }
         }
@@ -101,11 +101,11 @@ class KaryawanController
 
         if ($result !== -1) {
             $_SESSION["success"] = "Berhasil Update Karyawan!";
-            header("Location: /");
+            header("Location: {$GLOBALS['BASEURL']}");
             exit(200);
         }
         $_SESSION["error"] = "Gagal Update Karyawan!";
-        header("Location: /");
+        header("Location: {$GLOBALS['BASEURL']}");
         exit(400);
     }
 

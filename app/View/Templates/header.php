@@ -62,13 +62,13 @@
                 </a>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="<?= $BASEURL ?>/" class="nav-link <?= !isset($_SERVER["PATH_INFO"]) ? "active" : "" ?> link-dark">
+                        <a href="<?= $BASEURL ?>/" class="nav-link <?= !isset($_GET["url"]) ? "active" : "" ?> link-dark">
                             <i class="bi bi-house-door-fill"></i>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/penilaian" class="nav-link link-dark <?= isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] === "/penilaian" ? "active" : "" ?>">
+                        <a href="<?= $BASEURL ?>/penilaian" class="nav-link link-dark <?= isset($_GET["url"]) && $_GET["url"] === "penilaian" ? "active" : "" ?>">
                             <i class="bi bi-clipboard2-pulse-fill"></i>
                             Penilaian
                         </a>
@@ -82,7 +82,7 @@
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                         <li>
-                            <form action="/signOut" method="POST" class="dropdown-item">
+                            <form action="<?=$BASEURL?>/signOut" method="POST" class="dropdown-item">
                                 <input type="hidden" value="logout" name="logout">
                                 <button type="submit" class="badge btn-logout">Sign out</button>
                             </form>

@@ -24,7 +24,7 @@ class User extends Model
     public function registration(string $email,string $username, string $password, int $level,string $timestamp): int
     {
         $this->db->query("INSERT INTO user VALUES(:id,:email,:username,:password,:level,:created_at)");
-        $this->db->bind("id","");
+        $this->db->bind("id",0);
         $this->db->bind("email",$email);
         $this->db->bind("username",$username);
         $this->db->bind("password",$password);

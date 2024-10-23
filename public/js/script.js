@@ -41,17 +41,16 @@ $("#dropdownUser2").on("click", function () {
 
 const idUser = [];
 
+
 $(".update").each(function () {
   $(this).on("click", function () {
     const id = $(this).attr("value");
     $("#addKaryawan").show();
-    const url = window.location.origin;
+    const url = window.location.href;
     $.ajax({
-      url: `${url}/karyawanId`,
+      url: `${url}/karyawanId/${id}`,
       type: "GET",
-      data: { id: id },
       success: (response) => {
-        const data = JSON.parse(response);
         $("#addKaryawan .modal-body form").attr("action", "/updateKaryawan");
         $("#addKaryawan .modal-body form").attr("id", "updateId");
         $("#addKaryawan .modal-header .modal-title").html("Update Karyawan");
@@ -62,14 +61,14 @@ $(".update").each(function () {
         );
         $("#addKaryawan .modal-body form input[name='nik']").attr(
           "value",
-          data.nik
+          response.nik
         );
         $("#addKaryawan .modal-body form input[name='nama']").attr(
           "value",
-          data.nama
+          response.nama
         );
         $("#addKaryawan .modal-body form textarea[name='alamat']").val(
-          data.alamat
+          response.alamat
         );
 
         $("#updateId").on("submit", function (e) {
@@ -107,7 +106,7 @@ $("#btn-addKaryawan").on("click", function () {
 $(".delete").each(function () {
   $(this).on("click", function (e) {
     const id = $(this).attr("value");
-    const url = window.location.origin;
+    const url = window.location.href;
     e.preventDefault();
     Swal.fire({
       title: "Apakah Anda Yakin Ingin Menghapus Nya?",
@@ -121,6 +120,7 @@ $(".delete").each(function () {
           type: "POST",
           data: { id: id },
           success: (response) => {
+            console.log(response);
             const res = JSON.parse(response);
             if(res.status == 200)
             {
