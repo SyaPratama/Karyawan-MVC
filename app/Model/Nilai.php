@@ -14,7 +14,7 @@ class Nilai extends Model
     public function addNilai(int $id,int $disiplin,int $kerapian,int $kreativitas,string $created_at): int
     {
         $this->db->query("INSERT INTO nilai VALUES(:id,:id_karyawan,:disiplin,:kerapian,:kreativitas,:created_at)");
-        $this->db->bind("id","");
+        $this->db->bind("id",0);
         $this->db->bind('id_karyawan',$id);
         $this->db->bind('disiplin',$disiplin);
         $this->db->bind("kerapian",$kerapian);

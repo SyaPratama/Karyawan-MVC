@@ -45,7 +45,7 @@ $(".update").each(function () {
   $(this).on("click", function () {
     const id = $(this).attr("value");
     $("#addKaryawan").show();
-    const url = window.location.origin;
+    const url = window.location;
     $.ajax({
       url: `${url}/karyawanId`,
       type: "GET",

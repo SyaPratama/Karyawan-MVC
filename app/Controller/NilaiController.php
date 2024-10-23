@@ -21,12 +21,12 @@ class NilaiController
 
         if ($result !== -1) {
             $_SESSION["success"] = "Berhasil Menambahkan Nilai Karyawan!";
-            header("Location: /");
+              header("Location: {$GLOBALS['BASEURL']}");
             exit(200);
         }
 
         $_SESSION["error"] = "Gagal Menambahkan Nilai Karyawan!";
-        header("Location: /");
+          header("Location: {$GLOBALS['BASEURL']}");
         exit(400);
     }
 

@@ -1,7 +1,7 @@
 <main>
     <div id="container">
         <div class="row-login">
-            <form action="/login" method="POST" class="form login">
+            <form action="<?=$BASEURL?>/login" method="POST" class="form login">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="">Sign In</h3>
                     <div class="wrap-icon">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="row-register">
-            <form action="/register" method="POST" class="form login">
+            <form action="<?=$BASEURL?>/register" method="POST" class="form login">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="">Sign Up</h3>
                     <div class="wrap-icon">

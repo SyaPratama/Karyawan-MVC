@@ -3,6 +3,8 @@
 namespace karyawanmvc\App;
 
 class Router{
+
+
     static private Array $routes = [];
 
    static public function add(string $method,string $path,string $controller,string $function,array $middlewares = []): void{
@@ -17,34 +19,50 @@ class Router{
 
     static public function run(): void{
         $path = "/";
-
-        if(isset($_SERVER["PATH_INFO"])){
-            $path = $_SERVER["PATH_INFO"];
+        $url = self::parsingUrl();
+        
+        if(isset($url[0]))
+        {
+            $path =  "/$url[0]";
         }
 
         $method = $_SERVER["REQUEST_METHOD"];
 
-        foreach(self::$routes as $route)
+        foreach (self::$routes as $route )
         {
-            $pattern =  "#^". $route["path"]  ."$#";
-            if( preg_match($pattern,$path,$result) && $method == $route["method"]){
-                foreach($route["middleware"] as $middleware){
-                    $instance = new $middleware;
-                    $instance->before();
+            $pattern = "#^" . $route["path"] . "$#";
+            if(preg_match($pattern,$path,$resultVar) && $method === $route["method"])
+            {
+                foreach($route["middleware"] as $middleware)
+                {
+                    $instanceMiddleware = new $middleware;
+                    $instanceMiddleware->before();
                 }
 
                 $controller = new $route["controller"];
                 $function = $route["function"];
 
-                array_shift($result);
-                call_user_func_array([$controller,$function],$result);
-                return;
+                array_shift($resultVar);
+                call_user_func_array([$controller,$function],$resultVar);
             }
         }
-        http_response_code(404);
-        View::render("NotFound/index",[
-            "title" => "Not Found",
-            "content" => "NOT FOUND PAGE"
-        ]);
+
+        if(isset($url[0]))
+        {
+            header("Location: {$GLOBALS['BASEURL']}");
+            exit();
+        }
+    }
+
+    static public function parsingUrl()
+    {
+        if(isset($_GET["url"]))
+        {
+            $url = rtrim($_GET["url"],'/');
+            // Clean Url
+            $url = filter_var($url,FILTER_SANITIZE_URL);
+            $url = explode('/',$url);
+            return $url;
+        }
     }
 }

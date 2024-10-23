@@ -82,7 +82,7 @@
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                         <li>
-                            <form action="/signOut" method="POST" class="dropdown-item">
+                            <form action="<?=$BASEURL?>/signOut" method="POST" class="dropdown-item">
                                 <input type="hidden" value="logout" name="logout">
                                 <button type="submit" class="badge btn-logout">Sign out</button>
                             </form>

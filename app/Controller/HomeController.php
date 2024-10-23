@@ -22,15 +22,14 @@ class HomeController implements Controller
             $karyawanResult = $karyawan->searchKaryawan($keyword);
             $totalData = count($karyawanResult);
             $totalPage = ceil($totalData / $totalHalaman);
-            $karyawanResult = $karyawan->searchKaryawanPagination($keyword,$mainPage,$totalHalaman);
-
+            $karyawanResult = $karyawan->searchKaryawanPagination($keyword, $mainPage, $totalHalaman);
         } else if (isset($_GET["search"])) {
             $keyword = filter_var($_GET["search"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $karyawanResult = $karyawan->searchKaryawan($keyword);
             $totalData = count($karyawanResult);
             $totalPage = ceil($totalData / $totalHalaman);
-            $karyawanResult = $karyawan->searchKaryawanPagination($keyword,$mainPage,$totalHalaman);
-        }else{
+            $karyawanResult = $karyawan->searchKaryawanPagination($keyword, $mainPage, $totalHalaman);
+        } else {
             $karyawanResult = $karyawan->getKaryawanPage($mainPage, $totalHalaman);
         }
 
@@ -57,11 +56,11 @@ class HomeController implements Controller
         $resultNilai = $nilai->getNilai();
         $arrKaryawan = [];
 
-        foreach($resultNilai as $newNilai){
+        foreach ($resultNilai as $newNilai) {
             $findKaryawan = $karyawan->findKaryawanBydId($newNilai["id_karyawan"]);
-            array_push($arrKaryawan,$findKaryawan);
+            array_push($arrKaryawan, $findKaryawan);
         }
-        
+
         View::render("Dashboard/penilaian", [
             "title" => "Dashboard Penilaian Karyawan",
             "nilai" => $nilaiResult,
@@ -76,11 +75,11 @@ class HomeController implements Controller
     {
         if (isset($_POST["logout"]) && $_POST["logout"] === "logout") {
             session_destroy();
-            setcookie("LOGIN_ID", "", time() - 86400 * 100, '/');
-            header("Location: /");
+            setcookie("LOGIN_ID", "", time() - 86400 * 100);
+            header("Location: {$GLOBALS['BASEURL']}");
             exit(200);
         }
-        header("Location: /");
+        header("Location: {$GLOBALS['BASEURL']}");
         exit(400);
     }
 }

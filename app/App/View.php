@@ -12,7 +12,7 @@ class View
             $userController = new UserController();
             $user = $userController->getUserById($sessionId);
         }
-        $BASEURL = "http://{$_SERVER['HTTP_HOST']}";
+        $BASEURL = $GLOBALS["BASEURL"];
         require __DIR__ . "/../View/Templates/header.php";
         require __DIR__ . "/../View/" . $view . ".php";
         require __DIR__ . "/../View/Templates/footer.php";

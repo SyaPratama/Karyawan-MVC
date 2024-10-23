@@ -6,7 +6,7 @@
                     <h1 class="display-5 fw-bold">Not Found 404</h1>
                     <p class="fs-4">Sepertinya halaman yang kamu cari tidak ditemukan mohon maaf.</p>
                 </div>
-                <img class="img-not-found" src="<?= $BASEURL ?>/assets/notfound.png" alt="">
+                <img class="img-not-found" src="<?=$BASEURL?>/assets/notfound.png" alt="">
             </div>
         </div>
     </div>
