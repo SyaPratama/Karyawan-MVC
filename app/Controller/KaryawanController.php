@@ -21,11 +21,11 @@ class KaryawanController
         return $result;
     }
 
-    public function getKaryawanById(): void
+    public function getKaryawanById(int $id)
     {
-        $id = (int)$_GET["id"];
         $karyawan = new Karyawan();
         $result = $karyawan->getkaryawanById($id);
+        header("Content-Type: application/json");
         echo json_encode($result);
     }
 

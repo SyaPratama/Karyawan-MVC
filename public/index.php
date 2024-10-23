@@ -29,11 +29,10 @@ if(isset($_COOKIE["LOGIN_ID"])){
 
 if(!isset($_SESSION["LOGGED"])){
     Router::add("GET", "/", UserController::class, "index",[AuthMiddleware::class]);
-}else{
-    Router::add("GET", "/", HomeController::class, "index", [AuthMiddleware::class]);
-    Router::add("GET", "/penilaian", HomeController::class, "penilaian", [AuthMiddleware::class]);
-    Router::add("GET","/karyawanId",KaryawanController::class,"getKaryawanById",[AuthMiddleware::class]);
 }
+Router::add("GET", "/", HomeController::class, "index", [AuthMiddleware::class]);
+Router::add("GET", "/penilaian", HomeController::class, "penilaian", [AuthMiddleware::class]);
+Router::add("GET","/karyawanId/([0-9]*)",KaryawanController::class,"getKaryawanById",[AuthMiddleware::class]);
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
     if(!isset($_SESSION["LOGGED"])){
