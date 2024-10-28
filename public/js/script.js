@@ -51,7 +51,7 @@ $(".update").each(function () {
       url: `${url}/karyawanId/${id}`,
       type: "GET",
       success: (response) => {
-        $("#addKaryawan .modal-body form").attr("action", "/updateKaryawan");
+        $("#addKaryawan .modal-body form").attr("action", `${url}/updateKaryawan`);
         $("#addKaryawan .modal-body form").attr("id", "updateId");
         $("#addKaryawan .modal-header .modal-title").html("Update Karyawan");
         $("#addKaryawan .modal-footer .btn-primary").html("Update");
@@ -92,8 +92,9 @@ $(".update").each(function () {
 });
 
 $("#btn-addKaryawan").on("click", function () {
+  const url = window.location.href;
   $("#addKaryawan").show();
-  $("#addKaryawan .modal-body form").attr("action", "/addKaryawan");
+  $("#addKaryawan .modal-body form").attr("action", `${url}/addKaryawan`);
   $("#addKaryawan .modal-body form ").removeAttr("id");
   $("#addKaryawan .modal-header .modal-title").html("Tambah Karyawan");
   $("#addKaryawan .modal-footer .btn-primary").html("Tambah");

@@ -53,15 +53,15 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="addKaryawan" tabindex="-1" aria-labelledby="karyawan" aria-hidden="true">
+<div class="modal fade" id="updateNilai" tabindex="-1" aria-labelledby="nilai" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="karyawan">Tambah Karyawan</h1>
+                <h1 class="modal-title fs-5" id="nilai">Tambah Karyawan</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/addKaryawan" class="bg-body" method="POST">
+                <form action="/updateNilai" class="bg-body" method="POST">
                     <div class="mb-3 form-floating">
                         <input type="text" inputmode="numeric" class="form-control" name="nik" minlength="16" maxlength="16" id="Nik" placeholder="Masukkan Nik Anda..." required>
                         <label for="Nik">Nik</label>
@@ -78,38 +78,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Tambah</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="addNilai" tabindex="-1" aria-labelledby="nilai" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="nilai">Beri Nilai</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/addNilai" class="bg-body" method="POST">
-                    <div class="mb-3 form-floating">
-                        <input type="number" class="form-control" name="disiplin" min="0" max="100" id="disiplin" placeholder="Masukkan Nilai Disiplin Karyawan..." required>
-                        <label for="displin">Disiplin</label>
-                    </div>
-                    <div class="mb-3 form-floating">
-                        <input type="number" min="0" max="100" class="form-control" id="kerapian" name="kerapian" placeholder="Masukkan Nilai Kerapian Karyawan..." required>
-                        <label for="kerapian">Kerapian</label>
-                    </div>
-                    <div class="mb-3 form-floating">
-                        <input type="number" min="0" max="100" class="form-control" id="kreativitas" name="kreativitas" placeholder="Masukkan Nilai Kreativitas Karyawan..." required>
-                        <label for="kreativitas">Kreativitas</label>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Nilai</button>
             </div>
             </form>
         </div>

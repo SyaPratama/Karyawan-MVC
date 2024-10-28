@@ -41,10 +41,8 @@ cd Karyawan-MVC
 composer update
 ```
 
-```
-cd public
-php -S 127.0.0.1:8080
-```
+> [!NOTE]
+> Taruh Project Di folder htdocs di xampp,laragon,wamp kalian dan run apache server
 
 > Project Karyawan Sudah Bisa Dijalankan 
 
