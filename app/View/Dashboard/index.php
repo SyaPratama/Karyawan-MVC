@@ -69,7 +69,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/addKaryawan" class="bg-body" method="POST">
+        <form action="<?=$BASEURL?>/addKaryawan" class="bg-body" method="POST">
           <div class="mb-3 form-floating">
             <input type="text" inputmode="numeric" class="form-control" name="nik" minlength="16" maxlength="16" id="Nik" placeholder="Masukkan Nik Anda..." required>
             <label for="Nik">Nik</label>
@@ -101,7 +101,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/addNilai" class="bg-body" method="POST">
+        <form action="<?=$BASEURL?>/addNilai" class="bg-body" method="POST">
           <div class="mb-3 form-floating">
             <input type="number" class="form-control" name="disiplin" min="0" max="100" id="disiplin" placeholder="Masukkan Nilai Disiplin Karyawan..." required>
             <label for="displin">Disiplin</label>

@@ -2,7 +2,8 @@
 ob_start();
 session_start();
 
-require __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . '/../app/config/config.php';
+require_once __DIR__ . "/../vendor/autoload.php";
 
 use karyawanmvc\App\Router;
 use karyawanmvc\Controller\HomeController;
@@ -10,12 +11,6 @@ use karyawanmvc\Controller\KaryawanController;
 use karyawanmvc\Controller\NilaiController;
 use karyawanmvc\Controller\UserController;
 use karyawanmvc\Middleware\AuthMiddleware;
-
-
-$url = $_SERVER["PHP_SELF"];
-$servername = $_SERVER["SERVER_NAME"];
-$url = rtrim($url,'public/index.php');
-$GLOBALS["BASEURL"]  = "http://$servername" . "$url";
 
 if(isset($_COOKIE["LOGIN_ID"])){
     $cookieId = $_COOKIE["LOGIN_ID"];
@@ -29,10 +24,11 @@ if(isset($_COOKIE["LOGIN_ID"])){
 
 if(!isset($_SESSION["LOGGED"])){
     Router::add("GET", "/", UserController::class, "index",[AuthMiddleware::class]);
-}
-Router::add("GET", "/", HomeController::class, "index", [AuthMiddleware::class]);
+}else {
+    Router::add("GET", "/", HomeController::class, "index", [AuthMiddleware::class]);
 Router::add("GET", "/penilaian", HomeController::class, "penilaian", [AuthMiddleware::class]);
 Router::add("GET","/karyawanId/([0-9]*)",KaryawanController::class,"getKaryawanById",[AuthMiddleware::class]);
+}
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
     if(!isset($_SESSION["LOGGED"])){
