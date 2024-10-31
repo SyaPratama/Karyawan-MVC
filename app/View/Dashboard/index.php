@@ -51,8 +51,8 @@
       <?php for ($i = 1; $i <= $model["totalPage"]; $i++) : ?>
         <li class="page-item <?= $model["activePage"] == $i || !isset($_GET["page"]) && $i == 1 ? "active" : "" ?>"><a class="page-link" href="?page=<?= isset($_GET["search"]) ? $i . "&search=" . $_GET["search"] : $i ?>"><?= $i ?></a></li>
       <?php endfor; ?>
-      <li class="page-item <?= $model["activePage"] == $model["totalPage"] ? "disabled" : "" ?>">
-        <a class="page-link" href="?page=<?=  isset($_GET["search"]) ? $model["activePage"] + 1 . "&search=" . $_GET["search"]  : $model["activePage"] + 1 ?>">Next</a>
+      <li class="page-item <?= $model["activePage"] == $model["totalPage"] || count($model["karyawan"]) == 0 ? "disabled" : "" ?>">
+        <a class="page-link" href="?page=<?= isset($_GET["search"]) ? $model["activePage"] + 1 . "&search=" . $_GET["search"]  : $model["activePage"] + 1 ?>">Next</a>
       </li>
     </ul>
   </nav>
