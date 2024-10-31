@@ -25,7 +25,7 @@ class Connection
         $this->statement =  $this->dbh->prepare($sql);
     }
 
-    public function bind(string $param, mixed $value, $type = null): void
+    public function bind(string $param, mixed $value,  $type = null): void
     {
         if(is_null($type))
         {
