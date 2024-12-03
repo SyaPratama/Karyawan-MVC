@@ -31,4 +31,25 @@ class Nilai extends Model
         $this->db->execute();
         return $this->db->fetch();
     }
+
+    public function deletePenilaian(int $id): int
+    {
+        $this->db->query("DELETE FROM nilai WHERE id = :id");
+        $this->db->bind('id',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function updateNilai(int $id ,string $disiplin,string $kerapian, string $kreativitas, string $updatedAt): int
+    {
+        $this->db->query("UPDATE nilai SET disiplin = :disiplin, kerapian = :kerapian, kreativitas = :kreativitas, updated_at = :updated_at WHERE id = :id");
+        $this->db->bind("id", $id);
+        $this->db->bind("disiplin",$disiplin);
+        $this->db->bind("kerapian",$kerapian);
+        $this->db->bind("kreativitas",$kreativitas);
+        $this->db->bind("updated_at",$updatedAt);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

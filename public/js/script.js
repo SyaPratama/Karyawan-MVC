@@ -46,7 +46,7 @@ $(".update").each(function () {
   $(this).on("click", function () {
     const id = $(this).attr("value");
     $("#addKaryawan").show();
-    const url = window.location.href;
+    const url = window.location.origin;
     $.ajax({
       url: `${url}/karyawanId/${id}`,
       type: "GET",
@@ -92,7 +92,7 @@ $(".update").each(function () {
 });
 
 $("#btn-addKaryawan").on("click", function () {
-  const url = window.location.href;
+  const url = window.location.origin;
   $("#addKaryawan").show();
   $("#addKaryawan .modal-body form").attr("action", `${url}/addKaryawan`);
   $("#addKaryawan .modal-body form ").removeAttr("id");
@@ -107,7 +107,7 @@ $("#btn-addKaryawan").on("click", function () {
 $(".delete").each(function () {
   $(this).on("click", function (e) {
     const id = $(this).attr("value");
-    const url = window.location.href;
+    const url = window.location.origin;
     e.preventDefault();
     Swal.fire({
       title: "Apakah Anda Yakin Ingin Menghapus Nya?",
@@ -159,3 +159,92 @@ $('.nilai').each(function(){
       );
   });
 })
+
+$(".deletePenilaian").each(function () {
+  $(this).on("click", function (e) {
+    const id = $(this).attr("value");
+    const url = window.location.origin;
+    e.preventDefault();
+    Swal.fire({
+      title: "Apakah Anda Ingin Menghapus Data Penilaian?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: `${url}/deletePenilaian`,
+          type: "POST",
+          data: { id: id },
+          success: (response) => {
+            const res = JSON.parse(response);
+            if(res.status == 200)
+            {
+              Swal.fire({
+                title:"Berhasil Menghapus Karyawan",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              setTimeout(()=>{
+                window.location.reload();
+              },1600)
+            }else
+            {
+              Swal.fire({
+                title:"Gagal Menghapus Karyawan",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          },
+        });
+      }
+    });
+  });
+});
+
+$(".updatePenilaian").each(function () {
+  $(this).on("click", function () {
+    const id = $(this).attr("value");
+    const url = window.location.origin;
+    $.ajax({
+      url: `${url}/penilaianId/${id}`,
+      type: "GET",
+      success: (response) => {
+        $("#updateNilai .modal-body form input[type='hidden']").remove();
+        $("#updateNilai .modal-body form").append(
+          `<input type='hidden' name='id' value='${id}'>`
+        );
+        $("#updateNilai .modal-body form input[name='disiplin']").attr(
+          "value",
+          response.disiplin
+        );
+        $("#updateNilai .modal-body form input[name='kerapian']").attr(
+          "value",
+          response.kerapian
+        );
+        $("#updateNilai .modal-body form input[name='kreativitas']").val(
+          response.kreativitas
+        );
+
+        $("#nilaiUpdate").on("submit", function (e) {
+          e.preventDefault();
+          const form = $(this);
+          Swal.fire({
+            title: "Apakah Anda Yakin Ingin Mengupdate Nya?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Update",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              form.off("submit");
+              form.submit();
+            }
+          });
+        });
+      },
+    });
+  });
+});
